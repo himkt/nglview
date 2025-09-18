@@ -20,7 +20,7 @@ dependencies:
   - biopython
   - pymatgen
   - matplotlib
-  - moviepy
+  - moviepy<2.0.0
   - imageio
   - pillow<11.2.1
   - numpy<2.3.0
