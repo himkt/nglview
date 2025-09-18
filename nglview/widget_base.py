@@ -156,3 +156,8 @@ class WidgetBase(widgets.DOMWidget):
             super()._ipython_display_(**kwargs)
         except AttributeError:
             display(super()._repr_mimebundle_(), raw=True)
+
+    def __del__(self):
+        remote_thread = getattr(self, '_remote_call_thread', None)
+        if remote_thread is not None:
+            remote_thread.stop()

@@ -1340,6 +1340,11 @@ class NGLWidget(WidgetBase):
         for i, _ in enumerate(self._ngl_component_ids):
             yield self[i]
 
+    def __del__(self):
+        remote_thread = getattr(self, '_remote_call_thread', None)
+        if remote_thread is not None:
+            remote_thread.stop()
+
 
 class Fullscreen(DOMWidget):
     """EXPERIMENTAL
