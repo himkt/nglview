@@ -250,13 +250,13 @@ def test_API_promise_to_have():
 def test_add_trajectory():
     view = nv.NGLWidget(default=False)
 
-    # def update_coords(view=view):
-    #     view.frame = 1000
-    #     view.frame = 0
+    def update_coords(view=view):
+        view.frame = 1000
+        view.frame = 0
 
-    # print("ok1")
-    # p_traj = pt.load(nv.datafiles.TRR, nv.datafiles.PDB)
-    # view.add_trajectory(p_traj)
+    print("ok1")
+    p_traj = pt.load(nv.datafiles.TRR, nv.datafiles.PDB)
+    view.add_trajectory(p_traj)
     # m_traj = md.load(nv.datafiles.XTC, top=nv.datafiles.PDB)
     # view.add_trajectory(m_traj)
     # # trigger updating coordinates
