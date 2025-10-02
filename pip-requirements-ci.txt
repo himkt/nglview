@@ -13,12 +13,13 @@ ase
 biopython
 pymatgen
 matplotlib
-moviepy
 imageio
 pillow<11.2.1
-numpy
 numpy<2.3.0
 rdkit
 mdanalysis
 mdtraj
 #ambertools # have both pytraj and parmed
+moviepy<2.0.0
+parmed
+pytraj
