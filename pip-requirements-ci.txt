@@ -21,4 +21,4 @@ numpy<2.3.0
 rdkit
 mdanalysis
 mdtraj
-ambertools # have both pytraj and parmed
+#ambertools # have both pytraj and parmed
