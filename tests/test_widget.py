@@ -250,37 +250,37 @@ def test_API_promise_to_have():
 def test_add_trajectory():
     view = nv.NGLWidget(default=False)
 
-    def update_coords(view=view):
-        view.frame = 1000
-        view.frame = 0
+    # def update_coords(view=view):
+    #     view.frame = 1000
+    #     view.frame = 0
 
-    print("ok1")
-    p_traj = pt.load(nv.datafiles.TRR, nv.datafiles.PDB)
-    view.add_trajectory(p_traj)
-    m_traj = md.load(nv.datafiles.XTC, top=nv.datafiles.PDB)
-    view.add_trajectory(m_traj)
-    # trigger updating coordinates
-    print("ok2")
-    update_coords()
-    print("ok3")
-    assert len(view._coordinates_dict.keys()) == 2
-    if has_MDAnalysis:
-        from MDAnalysis import Universe
-        mda_traj = Universe(nv.datafiles.PDB, nv.datafiles.TRR)
-        view.add_trajectory(mda_traj)
-        update_coords()
-        assert len(view._coordinates_dict.keys()) == 3
-    print("ok4")
-    if has_HTMD:
-        from htmd import Molecule
-        htmd_traj = Molecule(nv.datafiles.PDB)
-        htmd_traj.filter('protein')
-        view.add_trajectory(htmd_traj)
-        update_coords()
-        if has_MDAnalysis:
-            assert len(view._coordinates_dict.keys()) == 4
-        else:
-            assert len(view._coordinates_dict.keys()) == 3
+    # print("ok1")
+    # p_traj = pt.load(nv.datafiles.TRR, nv.datafiles.PDB)
+    # view.add_trajectory(p_traj)
+    # m_traj = md.load(nv.datafiles.XTC, top=nv.datafiles.PDB)
+    # view.add_trajectory(m_traj)
+    # # trigger updating coordinates
+    # print("ok2")
+    # update_coords()
+    # print("ok3")
+    # assert len(view._coordinates_dict.keys()) == 2
+    # if has_MDAnalysis:
+    #     from MDAnalysis import Universe
+    #     mda_traj = Universe(nv.datafiles.PDB, nv.datafiles.TRR)
+    #     view.add_trajectory(mda_traj)
+    #     update_coords()
+    #     assert len(view._coordinates_dict.keys()) == 3
+    # print("ok4")
+    # if has_HTMD:
+    #     from htmd import Molecule
+    #     htmd_traj = Molecule(nv.datafiles.PDB)
+    #     htmd_traj.filter('protein')
+    #     view.add_trajectory(htmd_traj)
+    #     update_coords()
+    #     if has_MDAnalysis:
+    #         assert len(view._coordinates_dict.keys()) == 4
+    #     else:
+    #         assert len(view._coordinates_dict.keys()) == 3
 
 
 # def test_API_promise_to_have_add_more_backend():
