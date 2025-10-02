@@ -51,7 +51,7 @@ jobs:
     # https://github.com/Amber-MD/pytraj/blob/890b5a1f4ae440a4b3dd5e5b3cd1db072f4a3ea9/.github/workflows/python-package-conda.yml#L34C1-L55C11
     - name: Install prerequisite packages
       run: |
-        sudo apt-get install -y gfortran libbz2-dev libblas-dev liblapack-dev libfftw3-dev clang cmake-data cmake
+        sudo apt install -y gfortran libbz2-dev libblas-dev liblapack-dev libfftw3-dev clang cmake-data cmake
     - name: Get latest cpptraj commit hash
       id: get-hash
       run: |
