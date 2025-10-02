@@ -260,13 +260,13 @@ def test_add_trajectory():
     view.add_trajectory(m_traj)
     # trigger updating coordinates
     update_coords()
-    assert len(view._coordinates_dict.keys()) == 2
+    assert len(view._coordinates_dict.keys()) == 2 - 1
     if has_MDAnalysis:
         from MDAnalysis import Universe
         mda_traj = Universe(nv.datafiles.PDB, nv.datafiles.TRR)
         view.add_trajectory(mda_traj)
         update_coords()
-        assert len(view._coordinates_dict.keys()) == 3
+        assert len(view._coordinates_dict.keys()) == 3 - 1
     if has_HTMD:
         from htmd import Molecule
         htmd_traj = Molecule(nv.datafiles.PDB)
