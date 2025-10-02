@@ -50,7 +50,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pip install -r ./pip-trequirements-ci.txt
+        pip install -r ./pip-requirements-ci.txt
         python -m pytest -vs tests --cov=nglview --cov-report=html --disable-pytest-warnings
 
     - name: Check installation with pip
