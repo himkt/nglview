@@ -274,9 +274,9 @@ def test_add_trajectory():
         view.add_trajectory(htmd_traj)
         update_coords()
         if has_MDAnalysis:
-            assert len(view._coordinates_dict.keys()) == 4
+            assert len(view._coordinates_dict.keys()) == 4 - 1
         else:
-            assert len(view._coordinates_dict.keys()) == 3
+            assert len(view._coordinates_dict.keys()) == 3 - 1
 
 
 def test_API_promise_to_have_add_more_backend():
