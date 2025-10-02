@@ -48,8 +48,33 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    # https://github.com/Amber-MD/pytraj/blob/890b5a1f4ae440a4b3dd5e5b3cd1db072f4a3ea9/.github/workflows/python-package-conda.yml#L34C1-L55C11
+    - name: Get latest cpptraj commit hash
+      id: get-hash
+      run: |
+        latest_hash=$(git ls-remote https://github.com/Amber-MD/cpptraj.git refs/heads/master | awk '{print $1}')
+        echo "::set-output name=hash::$latest_hash"
+    - name: Cache cpptraj
+      uses: actions/cache@v4
+      with:
+        path: ~/cpptraj
+        key: ${{ runner.os }}-cpptraj-${{ steps.get-hash.outputs.hash }}
+        restore-keys: |
+          ${{ runner.os }}-cpptraj-
+    - name: Install cpptraj
+      run: |
+        if [ ! -d "$HOME/cpptraj" ]; then
+          CWD=$(pwd)
+          git clone https://github.com/Amber-MD/cpptraj $HOME/cpptraj
+          cd $HOME/cpptraj
+          yes | ./configure -shared -openmp gnu
+          make libcpptraj -j2
+          cd $CWD
+        fi
+
     - name: Run tests
       run: |
+        export CPPTRAJHOME=$HOME/cpptraj
         pip install -r ./pip-requirements-ci.txt
         python -m pytest -vs tests --cov=nglview --cov-report=html --disable-pytest-warnings
 
